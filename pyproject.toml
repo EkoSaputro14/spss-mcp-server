@@ -1,0 +1,32 @@
+[project]
+name = "spss-mcp-server"
+version = "0.1.0"
+description = "FastMCP Server for IBM SPSS Statistics 22 Automation via Wine"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "mcp>=1.2.0,<2.0.0",
+    "pydantic>=2.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+]
+
+[project.scripts]
+spss-mcp = "server:main"
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+markers = [
+    "integration: integration tests against Wine SPSS",
+    "unit: unit tests",
+]
+
+
